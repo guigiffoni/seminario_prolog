@@ -1,0 +1,83 @@
+\documentclass[
+    12pt,
+    openright,
+    % twoside,
+    a4paper,
+    brazil
+]{abntex2}
+
+% Pacotres básicos
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{indentfirst}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{microtype}
+\usepackage[alf]{abntex2cite}
+
+\titulo{Material de Apoio -- Seminário de Prolog}
+
+\autor{
+    Amanda Andrade Abreu 
+    \\
+    Guilherme Amaral Giffoni
+}
+\local{Belo Horizonte}
+\data{2026}
+\orientador[Professor:]{Dr. Marco Rodrigo Costa}
+\instituicao{
+    PONTIFÍCIA UNIVERSIDADE CATÓLICA DE MINAS GERAIS
+    \par
+    Instituto de Ciências Exatas e Informática
+}
+\tipotrabalho{Material de Apoio}
+
+\definecolor{blue}{RGB}{41,5,195}
+
+\makeatletter
+\hypersetup{
+    pdftitle={\@title},
+    pdfauthor={\@author},
+    pdfsubject={\imprimirpreambulo},
+    pdfcreator={LaTeX with abnTeX2},
+    colorlinks=true,
+    citecolor=blue,
+    filecolor=magenta,
+    urlcolor=blue
+    urlcolor=blue
+}
+
+\begin{document}
+
+\imprimirfolhaderosto*
+
+% SUMÁRIO
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+
+% falta roteiro e agenda...
+
+% TEXTO PRINCIPAL
+\textual
+\chapter{Introdução}
+
+\chapter{Histórico}
+% cronologia e genealogia
+
+\chapter{Paradigmas da Linguagem}
+
+\chapter{Características Marcantes}
+
+\chapter{Linguagens Relacionadas}
+% influenciadores, influenciadas, similares, "opostas", etc
+
+\chapter{Exemplo de Programas em Prolog}
+
+\chapter{Considerações Finais}
+
+\chapter{Bibliografia}
+
+\end{document}
