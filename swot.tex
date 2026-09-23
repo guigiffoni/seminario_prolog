@@ -1,0 +1,80 @@
+\begin{table}[htb]
+    \ABNTEXfontereduzida
+    \caption{Análise SWOT}
+
+    \makebox[\textwidth][c]{%
+    \begin{tabular}{| p{0.5\textwidth} | p{0.5\textwidth} |}
+        \hline
+        \textbf{Pontos fortes}:
+        \begin{itemize}
+            \item Sintáxe e semântica simples
+            \item Estruturas de dados persistentes e imutáveis, com ponteiros
+            ``declarativos''
+            \item Precisão aritimética arbritária 
+            \item Segurança (garbage collection, exceções NullPointer
+            inexistentes, \dots)
+            \item Inferência eficiente, casamento de padrões e unificação
+            \item Indexação e tabelamento eficiente
+            \item Desenvolvimento e debugging rápido com REPL (loop de leitura,
+            execução, impressão)
+            \item Aplicações de sucesso:
+            \begin{itemize}
+                \item Análise de programas
+                \item Processamento de linguagem natural
+                \item Sistemas especialistas, PAT (Prova automática de teoremas)
+            \end{itemize}
+        \end{itemize} & 
+        \textbf{Pontos fracos}: 
+        \begin{itemize}
+            \item Sintáticamente diferente das LPs ``tradicionais'', não é uma
+            linguagem \textit{mainstream} 
+            \item Curva de aprendizado íngrime; iniciantes podem facilmente
+            escrever programas que entram em loop ou consomem muitos recursos
+            computacionais
+            \item Tipagem estática
+            \item Portabilidade limitada
+            \item Bibliotecas/pacotes: avaliabilidade e gerência
+            \item IDEs e ferramentas de desenvolvimento possuem capacidades
+            limitadas em algumas áreas (como a refatoração) 
+            \item Desenvolvimento de interfaces de usuário
+        \end{itemize} 
+
+        \\ \hline
+
+        \textbf{Oportunidades}: 
+        
+        \begin{itemize}
+            \item Novas áreas de aplicação
+            \begin{itemize}
+                \item IA neurossimbólica
+                \item IA explicável e verificável
+                \item \textit{Big Data}
+            \end{itemize}
+
+            \item Novas funcionalidades e desenvolvimentos
+            \begin{itemize}
+                \item Raciocínio probabilístico
+                \item Paralelismo (como é feito em Lean)
+                \item Compilador JIT
+                \item Integrando resolução de ASPs (Programação de conjunto de
+                resposta) e SATs (Problema de satisfatibilidade booliana) ou
+                SMTs (Teorias de satisfatibilidade módulo).
+            \end{itemize}
+        \end{itemize} & 
+        \textbf{Ameaças}
+        
+        \begin{itemize}
+            \item \textit{User base} baixa, quando comparada com outras LPs
+            \item Comunidade fragmentada
+            \item Parte ativa da comunidade com novas implementações e
+            funcionalidades constantemente desenvolvidas criam fragmentação
+            \item Novas linguagens de programação
+            \item A percepção de ser uma LP ``antiga''
+            \item Imagem errada por ensino ``raso'' da linguagem
+            \item O mundo pós-desktop das aplicações web em JavaScript
+        \end{itemize}\\ \hline
+    \end{tabular}%
+    }
+
+    \legend{Fonte: \cite{korner2022fiftyyearsprolog}, Adaptado}
+\end{table}

@@ -1,57 +1,29 @@
-% CAPÍTULO HISTÓRICO
-% juntamente com cronologia e genealogia
+% Começar com uma introdução breve descrevendo e definindo o que é Prolog,
+% inicialmente, esta parte fica em branco, à medida que desenvolvermos a sua
+% história, esta parte pode ser melhor descrita.
 
-\begin{figure}[htb]
-    \caption{Timeline aproximada de alguns sistemas em Prolog (até o padrão ISO).}
+\section{Antecedentes pré-1972}
+Prolog é descedente de três principais linhas de pesquisa, sendo elas: PAT
+(prova automática de teoremas), processamento de linguagem natural e IA.
+\cite{korner2022fiftyyearsprolog}
 
-    \begin{center}
-        \includegraphics[width=1\textwidth]{figuras/timeline.png}
-    \end{center}
+O campo de pesquisa da inteligência artificial nasce por volta de 1956, e deu
+impulso para que fossem ciradas linguagens de programação funcionais, como o
+LISP, criado em 1958 por McCarthy. 
 
-    \legend{Fonte: Körner, 2022. Adaptado}
-\end{figure}
+O PAT teve notória presença em um trabalho seminal publicado por Alan Robinson
+em 1965 onde descrevia lógica computacional baseada no princípio da resolução. O
+que é o coração dos procedimentos de inferência adotados à programação de
+lógica.
 
-% Quando e onde a linguagem surgiu?
-% Quem foram seus criadores e colaboradores?
-% Que problema motivou sua criação?
-% Como a linguagem evoluiu em sintaxe, semântica e implementação?
-% Quais versões, padrões e implementações marcaram época?
-% Como a comunidade e as instituições influenciaram seu desenvolvimento?
-% Que aplicações impulsionaram seu uso?
-% Qual é o estado atual e o legado de Prolog?
+Enquanto isso, Alain Colmerauer tentava automatizar a conversação homem-máquina,
+o que o levou a desenvolver Q-systems que serviu para traduzir de inglês para
+francês os relatórios meteorológicos canadenses. Tudo isso poderia ser escrito
+em lógica, e inspirado nele, dentre outras coisas, os levou a criar Prolog.
 
-Prolog teve sua versão preliminar criada no final de 1971, e uma versão mais
-definitiva no final de 1972, na Université Grenoble Alpes, onde em fevereiro
-deste ano, conseguiram um investimento de 122.000,00 Francos Franceses, que em
-2026, valem o equivalente a R\$ 802.055,43 
-% citar de onde veio a conversão:
-% https://inflationhistory.com/en-US/?currency=FRF&amount=122000&year=1972
+% Tem que citar PLANNER, mas pra citar PLANNER é necessário explicar cláusulas
+% de HORN
 
-Alain Colmenarauer e Philippe Roussel foram os principais responsáveis pela sua
-confecção.
+% afinal de contas, o que é uma cláusula?
+\section{Nascimento do Prolog}
 
-\begin{verbatim}
-    Usuário:    Gatos matam ratos.
-                Tom é um gato que não gosta de ratos que comem queijo.
-                Jerry é um rato que come queijo.
-                Max não é um rato.
-                O que o Tom faz?
-    Computador: Tom não gosta de ratos que comem queijo.
-                Tom mata ratos.
-    Usuário:    Quem é um gato?
-    Computador: Tom.
-    Usuário:    O que Jerry come?
-    Computador: Queijo.
-    Usuário:    Quem não gosta de ratos que comem queijo?
-    Computador: Tom.
-    Usuário:    O que Tom come?
-    Computador: O que gatos que não gostam de ratos que comem queijo comem.
-\end{verbatim}
-\cite{Colmerauer1993-cj}, Adaptado
-
-
-
-% No começo de julho dos anos de 1970, Robert Pasero e Philippe foram convidados
-% por Alain, que na época era Professor Assistente da Ciência da Computação na
-% Universidade de Montreal, e liderando o projeto de tradução automatica, TAUM
-% (Traduction Automatique de l'Université de Montréal). 

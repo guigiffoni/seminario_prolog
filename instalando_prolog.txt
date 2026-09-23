@@ -1,0 +1,22 @@
+sudo dnf install -y swi-prolog
+
+Package                   Arch   Version         Repository      Size
+Installing:
+ swi-prolog               noarch 0:10.0.2-1.fc44 fedora       0.0   B
+Installing dependencies:
+ js-jquery                noarch 0:3.7.1-8.fc44  fedora     532.4 KiB
+ swi-prolog-cli           x86_64 0:10.0.2-1.fc44 fedora     814.8 KiB
+ swi-prolog-core          x86_64 0:10.0.2-1.fc44 fedora       6.9 MiB
+ swi-prolog-core-packages x86_64 0:10.0.2-1.fc44 fedora      10.0 MiB
+ swi-prolog-doc           noarch 0:10.0.2-1.fc44 fedora      11.2 MiB
+ swi-prolog-win           x86_64 0:10.0.2-1.fc44 fedora      13.1 MiB
+ uuid                     x86_64 0:1.6.2-68.fc44 fedora     128.4 KiB
+ web-assets-filesystem    noarch 0:5-25.fc44     fedora      34.0   B
+Installing weak dependencies:
+ swi-prolog-bdb           x86_64 0:10.0.2-1.fc44 fedora      60.0 KiB
+ swi-prolog-java          x86_64 0:10.0.2-1.fc44 fedora     372.0 KiB
+ swi-prolog-odbc          x86_64 0:10.0.2-1.fc44 fedora       1.8 MiB
+
+Transaction Summary:
+ Installing:        12 packages
+
