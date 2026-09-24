@@ -15,7 +15,10 @@
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{microtype}
+\usepackage{minted}
 \usepackage[alf]{abntex2cite}
+
+% \input{listings_style.tex}
 
 \titulo{Material de Apoio -- Seminário de Prolog}
 
@@ -73,16 +76,24 @@
 \chapter{Características Marcantes}
 % analisar um capítulo ou seção melhor para colocar a análise SWOT, creio que
 % deva estar em seu próprio capítulo
+\input{capitulos/char_marcantes.tex}
 \input{swot.tex}
 
 \chapter{Linguagens Relacionadas}
 % influenciadores, influenciadas, similares, "opostas", etc
-
+\begin{itemize}
+    \item PLANNER é uma linguagem influenciadora 
+    \item Bend (linguagem pt-br) é provavelmente uma linguagem de alguma forma
+    relacionada, apesar de talvez não ter noção disso; em particular, Bend 2
+    % pode-se encontrar essa afirmação na página 17 no penúltimo parágrafo
+    \item Linguagens OOP notórias como Java e C++ parecem ser opostas
+\end{itemize}
 
 \chapter{Exemplo de Programas em Prolog}
 
 
 \chapter{Considerações Finais}
+
 
 \postextual
 \bibliography{referencias.bib}

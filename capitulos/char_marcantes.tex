@@ -1,0 +1,92 @@
+% Programming in Prolog - não esquecer de citá-la
+
+Na experiência do autor do livro (citar livro), Prolog é uma linguagem que
+programadores iniciantes acham ser mais compreensiva que programas equivalentes
+em linguagens ``convencionais''. Em contra-partida, programadores experientes
+nessas mesmas linguagens, apesar de estarem mais bem preparados para os
+conceitos abstratos que sondam as LPs, podem achar Prolog uma linguagem díficil
+de se acostumar, e precisam de muito convencimento até considerarem a linguagem
+como uma ferramenta de programação útil.
+
+Desde seus começos ao redor de 1970, Prolog foi escolhido por muitos
+programadores para aplicações de computação simbólica, como:
+
+\begin{itemize}
+    % verificar se estes são mesmo os termos em PT-BR
+    % ter certeza também que sabe, ao menos em conceito o que significa
+    \item Lógica matemática
+    \item Resolução de problemas abstratos
+    \item Entender linguagem natural
+    \item banco de dados relacional
+    \item Implementar automação
+    \item Resolução de equações simbólicas
+    \item Análise de estrutura bioquímica
+    \item E várias áreas de inteligência artificial
+\end{itemize}
+
+% importante citar também como a linguagem dá nome aos seus elementos sintáticos
+% e semânticos, pode-se encontrar isso no livro na seção 1.2 e 1.3 termos
+% imporantes: fatos, perguntas, variáveis, conjunções (conjunctions), regras
+% listas e recursão
+
+Prolog permite que um computador seja usado como um armazem de fatos e regras,
+nos permite a fazer inferências de um fato para outro, encontrar os valores da
+variáveis pode nos levar a uma dedução lógica.
+
+\section{Comentários}
+\begin{minted}{prolog}
+    % esse é um comentário de uma linha só (lembra LaTeX)
+    mãe(roberta, joaquina) % roberta é mãe de joaquina
+
+    /*
+    rosas são vermelhas
+    violetas são azuis
+    comentário multilinha
+    adoro cuzcuz
+    */
+\end{minted}
+
+\section{Fatos}
+
+Para expressar a relação: ``João gosta de Maria'', escrevemos em Prolog:
+
+\begin{minted}{prolog}
+    gosta(joão, maria).
+\end{minted}
+
+A ordem dos fatores é arbitrária, mas deve respeitar alguma ordem determinada
+pelo programador, para manter consistência. No exemplo, levemos em consideração
+que a pessoa que gosta, seja o primeiro ``elemento'' do que está entre
+parênteses. Que não é a mesma coisa que:
+
+\begin{minted}{prolog}
+    gosta(maria, joão).
+\end{minted}
+
+Para demonstrar com mais clareza ainda como a consistência é importante na
+linguagem, observe a seguinte definição de um \emph{fato}:
+\begin{minted}{prolog}
+    pai(tom, william).
+\end{minted}
+Podemos assumir que \emph{tom} é pai de \emph{william}, mas também podemos
+interpretar que os dois possuem o mesmo pai. A linguagem não restringe a
+semântica, que por sua vez, é responsabilidade do programador.
+
+Outros exemplos, com as possíveis interpretações:
+\begin{minted}{prolog}
+    valioso(diamante).          % Diamante é valioso.
+    mulher(jane).               % Jane é uma mulher.
+    possui(jane, diamante).     % Jane possui diamantes
+    pai(alberto, maria).        % Alberto é pai de Maria
+    da(alberto, livro, maria).  % Alberto deu um livro para Maria
+\end{minted}
+
+Note que cada fato descrito acima, termina com um ponto final.
+
+Vamos agora dar as terminologias corretas para essa construção; os
+\emph{objetos} entre parênteses (de vermelho) são os argumentos, e o nome da
+relação que vem antes (de azul), é chamado de \emph{predicado}.
+
+O coletivo de fatos é chamado de \emph{base de dados}.
+
+\section{Perguntas}
