@@ -33,6 +33,10 @@ Prolog permite que um computador seja usado como um armazem de fatos e regras,
 nos permite a fazer inferências de um fato para outro, encontrar os valores da
 variáveis pode nos levar a uma dedução lógica.
 
+A sintaxe dos seus programas é muito defernte das linguagens funcionais e
+imperativas. A semântica também tem pouca semelhança com a dos programas em
+linguagens imperativas.
+
 \section{Comentários}
 \begin{minted}{prolog}
     % esse é um comentário de uma linha só (lembra LaTeX)
@@ -90,3 +94,125 @@ relação que vem antes (de azul), é chamado de \emph{predicado}.
 O coletivo de fatos é chamado de \emph{base de dados}.
 
 \section{Perguntas}
+
+Com alguns fatos em mãos, podemos fazer algumas perguntas agora. Perguntas são
+como fatos na perspectiva sintática, exceto que colocamos o símbolo de
+interrogação seguido de um hífen. Considere:
+
+\begin{minted}{prolog}
+    ?- proprietario(maria, veiculo).
+\end{minted}
+
+Quando uma pergunta é feita, o sistema vasculhará a base de dados em busca de
+fatos que unem o fato da questão. Dois fatos \emph{unem} se seus predicados
+conferem. Se o Prolog encontrar o fato que une com a questão, o mesmo
+responderá: sim. Se não existir, Prolog responderá não.
+
+Considere a base de dados abaixo:
+
+\begin{minted}{prolog}
+    gosta(mario, cogumelo).
+    gosta(mario, peach).
+    gosta(peach, toad).
+    gosta(luigi, toad).
+    gosta(luigi, moeda).
+\end{minted}
+
+Com esta base de dados, podemos fazer perguntas e o Prolog responderá:
+
+\begin{minted}{prolog}
+    ?- gosta(mario, moeda).
+    no
+    ?- gosta(mario, toad).
+    no
+    ?- gosta(mario, peach).
+    yes
+\end{minted}
+
+Em prolog, a resposta ``no'' é usada pra dizer ``nada se une com a pergunta''; o
+que não é a mesma coisa que falso. Apesar de luigi também gostar de cogumelos,
+não podemos provar isso a partir dos fatos da base de dados.
+
+
+\section{Variáveis}
+
+As variáveis em Prolog são diferentes da noção convencional, no seu contexto,
+ela serve para que o sistema responda à pergunta, por exemplo: "do que o mario
+gosta?", como destacado abaixo:
+
+\begin{minted}{prolog}
+    ?- gosta(mario, AlgoQueMarioGosta).
+\end{minted}
+
+Note que o segundo argumento começa com uma letra maiúscula! Isto é proposital e
+é a sintaxe utilizada para marcar variáveis. Quando fazemos uma pergunta ao
+Prolog em que um dos argumento é uma varíavel, a linguagem pesquisa por todos os
+seus fatos para encontrar um objeto que a variável podería ser, em termos
+técnicos: o que pode ser unificado. 
+
+Poderíamos reduzir AlgoQueMarioGosta por X e não teríamos problemas semânticos
+
+\begin{minted}{prolog}
+    ?- gosta(mario, X).
+    X = cogumelo
+\end{minted}
+
+A partir desse momento a variável X está \emph{instanciada} para cogumelo. Se
+estivermos satisfeitos com a resposta do programa, podemos pressionar
+\texttt{Enter} para terminar a busca neste ponto, caso contrário pressionamos
+\texttt{;}, quando não há mais nada a unificar, a busca termina.
+
+\begin{minted}{prolog}
+    ?- gosta(mario, X).
+    X = cogumelo ;
+    X = peach.
+\end{minted}
+
+Da mesma forma, podemos expressar:
+
+\begin{minted}{prolog}
+    ?- gosta(X, cogumelo).
+    X = peach ;
+    X = luigi.
+\end{minted}
+
+
+\section{Regras}
+E se quiséssemos representar que a Peach é a princesa de todos os Toads? Uma das
+formas que podemos fazer isso é escrevendo que Peach reina sob cada um dos
+Toads. Por exemplo:
+
+\label{exemplo_peach}
+\begin{minted}{prolog}
+    princesa(peach, toadette).
+    princesa(peach, toad).
+    princesa(peach, toadsworth).
+    princesa(peach, capitaoToad).
+    princesa(peach, toadAzul).
+    % por aí vai...
+\end{minted}
+
+A boa notícia é que há uma melhor forma de descrever essa relação, podemos
+declarar que a \emph{Peach é princesa de qualquer objeto que é classificado como
+um toad (como espécie)}. Este \emph{fato}, é dado como uma \emph{regra}.
+
+\begin{verbatim}
+    X é um mamífero se:
+        X possui glândula sudoríparas, e
+        X possui pelos
+
+    ou
+
+    X é irmão de Y se:
+        X é masculino, e
+        X e Y têm os mesmos pais
+\end{verbatim}
+
+Em Prolog, uma regra consiste de um cabeçalho e um corpo. Que são conectados
+pelo símbolo \texttt{:-}, pronunciado como ``se''. No exemplo anterior da
+princesa, podemos expressar essa regra da seguinte forma:
+
+\begin{minted}{prolog}
+    % Peach é princesa de qualquer um que é da espécie "toad"
+    princesa(peach, X) :- especie(toad).
+\end{minted}
