@@ -1,13 +1,2 @@
-gosta(mario, cogumelo).
-gosta(mario, peach).
-gosta(peach, toad).
-gosta(luigi, toad).
-gosta(luigi, moeda).
-
-especie(toadette, toad).
-especie(toad, toad).
-especie(toadsworth, toad).
-especie(capitaoToad, toad).
-especie(toadAzul, toad).
-
-princesa(peach, X) :- especie(X, toad).
+vertical(linha(ponto(X,Y1),ponto(X,Y2))).
+horizontal(linha(ponto(X1,Y),ponto(X2,Y))).

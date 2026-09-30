@@ -24,11 +24,6 @@ programadores para aplicações de computação simbólica, como:
     \item E várias áreas de inteligência artificial
 \end{itemize}
 
-% importante citar também como a linguagem dá nome aos seus elementos sintáticos
-% e semânticos, pode-se encontrar isso no livro na seção 1.2 e 1.3 termos
-% imporantes: fatos, perguntas, variáveis, conjunções (conjunctions), regras
-% listas e recursão
-
 Prolog permite que um computador seja usado como um armazem de fatos e regras,
 nos permite a fazer inferências de um fato para outro, encontrar os valores da
 variáveis pode nos levar a uma dedução lógica.
@@ -36,6 +31,8 @@ variáveis pode nos levar a uma dedução lógica.
 A sintaxe dos seus programas é muito defernte das linguagens funcionais e
 imperativas. A semântica também tem pouca semelhança com a dos programas em
 linguagens imperativas.
+
+% NECESSÁRIO DEMONSTRAR AS DIFERENÇAS COM LINGUAGENS IMPERATIVAS
 
 \section{Comentários}
 \begin{minted}{prolog}
@@ -50,6 +47,7 @@ linguagens imperativas.
     */
 \end{minted}
 
+% Fatos, regras e consultas.
 \section{Fatos}
 
 Para expressar a relação: ``João gosta de Maria'', escrevemos em Prolog:
@@ -64,7 +62,7 @@ que a pessoa que gosta, seja o primeiro ``elemento'' do que está entre
 parênteses. Que não é a mesma coisa que:
 
 \begin{minted}{prolog}
-    gosta(maria, joão).
+gosta(maria, joão).
 \end{minted}
 
 Para demonstrar com mais clareza ainda como a consistência é importante na
@@ -78,11 +76,11 @@ semântica, que por sua vez, é responsabilidade do programador.
 
 Outros exemplos, com as possíveis interpretações:
 \begin{minted}{prolog}
-    valioso(diamante).          % Diamante é valioso.
-    mulher(jane).               % Jane é uma mulher.
-    possui(jane, diamante).     % Jane possui diamantes
-    pai(alberto, maria).        % Alberto é pai de Maria
-    da(alberto, livro, maria).  % Alberto deu um livro para Maria
+valioso(diamante).          % Diamante é valioso.
+mulher(jane).               % Jane é uma mulher.
+possui(jane, diamante).     % Jane possui diamantes
+pai(alberto, maria).        % Alberto é pai de Maria
+da(alberto, livro, maria).  % Alberto deu um livro para Maria
 \end{minted}
 
 Note que cada fato descrito acima, termina com um ponto final.
@@ -100,7 +98,7 @@ como fatos na perspectiva sintática, exceto que colocamos o símbolo de
 interrogação seguido de um hífen. Considere:
 
 \begin{minted}{prolog}
-    ?- proprietario(maria, veiculo).
+?- proprietario(maria, veiculo).
 \end{minted}
 
 Quando uma pergunta é feita, o sistema vasculhará a base de dados em busca de
@@ -111,27 +109,28 @@ responderá: sim. Se não existir, Prolog responderá não.
 Considere a base de dados abaixo:
 
 \begin{minted}{prolog}
-    gosta(mario, cogumelo).
-    gosta(mario, peach).
-    gosta(peach, toad).
-    gosta(luigi, toad).
-    gosta(luigi, moeda).
+gosta(mario, cogumelo).
+gosta(mario, peach).
+gosta(peach, toad).
+gosta(luigi, toad).
+gosta(luigi, moeda).
 \end{minted}
 
 Com esta base de dados, podemos fazer perguntas e o Prolog responderá:
 
 \begin{minted}{prolog}
-    ?- gosta(mario, moeda).
-    no
-    ?- gosta(mario, toad).
-    no
-    ?- gosta(mario, peach).
-    yes
+?- gosta(mario, moeda).
+no
+?- gosta(mario, toad).
+no
+?- gosta(mario, peach).
+yes
 \end{minted}
 
 Em prolog, a resposta ``no'' é usada pra dizer ``nada se une com a pergunta''; o
 que não é a mesma coisa que falso. Apesar de luigi também gostar de cogumelos,
-não podemos provar isso a partir dos fatos da base de dados.
+não podemos provar isso a partir dos fatos da base de dados (hipótese do mundo
+fechado).
 
 
 \section{Variáveis}
@@ -141,7 +140,7 @@ ela serve para que o sistema responda à pergunta, por exemplo: "do que o mario
 gosta?", como destacado abaixo:
 
 \begin{minted}{prolog}
-    ?- gosta(mario, AlgoQueMarioGosta).
+?- gosta(mario, AlgoQueMarioGosta).
 \end{minted}
 
 Note que o segundo argumento começa com uma letra maiúscula! Isto é proposital e
@@ -153,8 +152,8 @@ técnicos: o que pode ser unificado.
 Poderíamos reduzir AlgoQueMarioGosta por X e não teríamos problemas semânticos
 
 \begin{minted}{prolog}
-    ?- gosta(mario, X).
-    X = cogumelo
+?- gosta(mario, X).
+X = cogumelo
 \end{minted}
 
 A partir desse momento a variável X está \emph{instanciada} para cogumelo. Se
@@ -163,17 +162,17 @@ estivermos satisfeitos com a resposta do programa, podemos pressionar
 \texttt{;}, quando não há mais nada a unificar, a busca termina.
 
 \begin{minted}{prolog}
-    ?- gosta(mario, X).
-    X = cogumelo ;
-    X = peach.
+?- gosta(mario, X).
+X = cogumelo ;
+X = peach.
 \end{minted}
 
 Da mesma forma, podemos expressar:
 
 \begin{minted}{prolog}
-    ?- gosta(X, cogumelo).
-    X = peach ;
-    X = luigi.
+?- gosta(X, cogumelo).
+X = peach ;
+X = luigi.
 \end{minted}
 
 
@@ -184,12 +183,12 @@ Toads. Por exemplo:
 
 \label{exemplo_peach}
 \begin{minted}{prolog}
-    princesa(peach, toadette).
-    princesa(peach, toad).
-    princesa(peach, toadsworth).
-    princesa(peach, capitaoToad).
-    princesa(peach, toadAzul).
-    % por aí vai...
+princesa(peach, toadette).
+princesa(peach, toad).
+princesa(peach, toadsworth).
+princesa(peach, capitaoToad).
+princesa(peach, toadAzul).
+% por aí vai...
 \end{minted}
 
 A boa notícia é que há uma melhor forma de descrever essa relação, podemos
@@ -197,15 +196,15 @@ declarar que a \emph{Peach é princesa de qualquer objeto que é classificado co
 um toad (como espécie)}. Este \emph{fato}, é dado como uma \emph{regra}.
 
 \begin{verbatim}
-    X é um mamífero se:
-        X possui glândula sudoríparas, e
-        X possui pelos
+X é um mamífero se:
+    X possui glândula sudoríparas, e
+    X possui pelos
 
-    ou
+ou
 
-    X é irmão de Y se:
-        X é masculino, e
-        X e Y têm os mesmos pais
+X é irmão de Y se:
+    X é masculino, e
+    X e Y têm os mesmos pais
 \end{verbatim}
 
 Em Prolog, uma regra consiste de um cabeçalho e um corpo. Que são conectados
@@ -213,6 +212,171 @@ pelo símbolo \texttt{:-}, pronunciado como ``se''. No exemplo anterior da
 princesa, podemos expressar essa regra da seguinte forma:
 
 \begin{minted}{prolog}
-    % Peach é princesa de qualquer um que é da espécie "toad"
-    princesa(peach, X) :- especie(toad).
+% Toadette é da espécie toad
+especie(toadette, toad).
+especie(toad, toad).
+especie(toadsworth, toad).
+especie(capitaoToad, toad).
+especie(toadAzul, toad).
+
+% Peach é princesa de qualquer um que é da espécie "toad"
+princesa(peach, X) :- especie(X, toad).
+
+% lê-se como: peach é princesa de X se X é da espécie toad
+?- princesa(peach, X).
+X = toadette ;
+X = toad ;
+X = toadsworth ;
+X = capitaoToad ;
+X = toadAzul.
 \end{minted}
+
+% Unificação. Uma das principais ideias de Prolog
+\newpage
+\section{Unificação}
+E se quisermos, a partir de predicatos afirmar condições para que algo seja
+verdadeiro? Ou em português brasileiro, como podemos dizer, por exemplo, que
+algo é uma linha horizontal ou vertical? Podemos pensar nisso, primeiro de forma
+imperativa, com C:
+
+\begin{minted}{C}
+#include <stdio.h>
+#include <stdbool.h>
+
+typedef struct {
+    int x;
+    int y;
+} Ponto;
+
+typedef struct {
+    Ponto p1;
+    Ponto p2;
+} Linha;
+
+Ponto ponto(int x, int y) {
+    Ponto p = {x, y};
+    return p;
+}
+
+Linha linha(Ponto p1, Ponto p2) {
+    Linha l = {p1, p2};
+    return l;
+}
+
+// vertical(linha(ponto(X,Y), ponto(X,Z))) -> mesmo X
+bool vertical(Linha l) {
+    return l.p1.x == l.p2.x;
+}
+
+// horizontal(linha(ponto(X,Y), ponto(Z,Y))) -> mesmo Y
+bool horizontal(Linha l) {
+    return l.p1.y == l.p2.y;
+}
+
+const char* bool_str(bool b) {
+    return b ? "true" : "false";
+}
+
+int main(void) {
+    int x1, y1, x2, y2;
+
+    printf("Digite as coordenadas no formato: x1 y1 x2 y2\n");
+    printf("Exemplo: 1 1 1 3\n");
+
+    while (scanf("%d %d %d %d", &x1, &y1, &x2, &y2) == 4) {
+        Linha l = linha(ponto(x1, y1), ponto(x2, y2));
+
+        printf("Linha: ponto(%d,%d) -> ponto(%d,%d)\n", x1, y1, x2, y2);
+        printf("vertical   ?- %s\n", bool_str(vertical(l)));
+        printf("horizontal ?- %s\n", bool_str(horizontal(l)));
+        printf("\nDigite mais coordenadas: ");
+    }
+
+    printf("\nEncerrado.\n");
+    return 0;
+}
+\end{minted} 
+\cite{deepseek_prompt_imperativo}
+
+Em Prolog, podemos reproduzir o mesmo esquema a partir de predicados de forma
+muito mais simples, veja o exemplo:
+
+\begin{minted}{prolog}
+% observe com atenção, os argumentos dos predicados "ponto"
+vertical(linha(ponto(X,Y1),ponto(X,Y2))).
+horizontal(linha(ponto(X1,Y),ponto(X2,Y))).
+
+% a partir disto, já podemos realizar as consultas:
+?- vertical(linha(ponto(1,1),ponto(1,3))).
+true.
+
+?- vertical(linha(ponto(1,1),ponto(2,3))).
+false.
+
+?- horizontal(linha(ponto(1,1),ponto(3,1))).
+true.
+
+?- horizontal(linha(ponto(1,1),ponto(3,2))).
+false.
+\end{minted}
+
+O que acabamos de fazer é chamado de unificação, porém damos termos já
+conhecidos para o predicado \emph{linha}, isso é ``simples'' em Prolog podemos
+ser mais gerais e perguntar % não sei como completar essa frase...
+
+% colocar um gráfico pra usar a GPU do cérebro
+\begin{minted}{prolog}
+% repare bem nas variáveis!
+?- vertical(linha(ponto(1,1),ponto(X,Y))).
+X = 1.
+
+?- vertical(linha(ponto(1,1),ponto(1,Y))).
+true.
+
+% porque _?
+?- vertical(linha(ponto(1,1),ponto(X,_))).
+X = 1.
+
+?- vertical(linha(ponto(1,1),ponto(2,Y))).
+false.
+
+?- vertical(linha(ponto(1,1),P)).
+P = ponto(1, _).
+
+?- vertical(linha(ponto(1,_),P)).
+P = ponto(1, _).
+
+% podemos até mesmo ter a própria definição de vertical!
+?- vertical(linha(P1,P2)).
+P1 = ponto(_A, _),
+P2 = ponto(_A, _).
+\end{minted}
+
+% Backtracking e resolução SLD.
+\newpage
+\section{Backtracking}
+% vídeo FANTÁSTICO de backtrack https://www.youtube.com/watch?v=AmWf6SeFmqc
+% temos que citar ele como fonte
+\inputminted{prolog}{codigo/backtrack_simpson.pl}
+Na regra para encontrar o pai, o Prolog passa pelos predicados procurando pelo
+predicado \emph{pai}, e então, em Y é instanciado ``bart'', agora Prolog procura
+por um parente X que tenha como filho, ``bart''. O primeiro fato encontrado será
+pais(marge, bart), agora X é ``marge'', no próximo predicado, Prolog checa se X
+é homem, por X não ser homem, ele realiza o que chamamos de ``rastreamento para
+trás'', ou \textit{backtracking}; que é quando Prolog irá continuar a busca do
+último ponto que teve sucesso. Dessa vez, encontrando homer, checa se homer é um
+homem, e retorna X como ``homer''.
+
+% Recursão e predicados relacionais.
+Recursão
+\inputminted{prolog}{codigo/fatorial.pl}
+
+
+% Variáveis lógicas e termos.
+
+
+% Cut, negação como falha e ordem.
+
+
+% Extensões: CLP, meta-programação e DCGs.
+
